@@ -1,11 +1,18 @@
-import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter as Router,Routes,Route,Link} from 'react-router-dom';
+import HomePage from "./Pages/HomePage"
+import About from "./Pages/About"
+import NavBar from "./Components/NavBar"
 
 function App() {
   return (
-    <div className="App">
-      Jordan
-    </div>
+    <Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/About" element={<About />} />
+      </Routes>
+    </Router>
   );
 }
 

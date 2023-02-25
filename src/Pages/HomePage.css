@@ -1,0 +1,36 @@
+.home-container{
+    /* margin-left: 3rem;
+    margin-right: 3rem; */
+    margin-top: 2rem;
+    border-top: solid 5px #F05D5E;
+    width: 80%;  
+    margin:3rem auto 0 auto;
+} 
+
+.home-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem !important; 
+}
+
+@media (max-width: 800px){
+    .home-container{
+        /* margin-left: 3rem;
+        margin-right: 3rem; */
+        margin-top: 2rem;
+        border-top: none;
+        width: 100%;
+        
+        margin:3rem auto 0 auto;
+    } 
+    
+    .home-container > h1{
+        padding-left: 2rem;
+    }
+    .home-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 2rem;
+        gap: 1rem;
+    }
+}
