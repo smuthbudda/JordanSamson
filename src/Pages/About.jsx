@@ -7,7 +7,8 @@ function About() {
     <div className="about-container">
       <h1 className="about-title">About</h1>
       <p className="about-paragraph">
-        I'm Jordan! Im a software developer and wanna be sprinter who is currently living in Melbourne, Vic.
+        I'm Jordan! Im a software developer and wanna be sprinter who is currently living in Melbourne, Vic. I made this
+        website using react because why not :)
         <br/>
         <br/>
         I attended the University of Calgary and studied <b>Economics</b> with a minor in computer science and graduated

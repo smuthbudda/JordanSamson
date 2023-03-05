@@ -45,3 +45,32 @@
         gap: 1rem;
     }
 }
+
+@media (max-width: 500px){
+    .home-container{
+        margin-top: 2rem;
+        border-top: none;
+        width: 100%;    
+        margin:0
+    } 
+    
+    .home-container > h1{
+        padding-left: 0rem;
+    }
+    .home-grid{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        margin: 2rem;
+        gap: 1rem;
+    }
+
+    .about-container{
+        /* margin-left: 3rem;
+        margin-right: 3rem; */
+        margin-top: 2rem;
+        width: 85%;  
+        margin:2rem auto 0 auto;
+        display: flex;
+        flex-direction: column;
+    } 
+}
