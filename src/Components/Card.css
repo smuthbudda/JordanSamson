@@ -4,7 +4,8 @@
     height: 250px;
     margin: 0 auto;
     /* background-color: #b6b6b6; */
-    border: solid #000000;
+    /* border: solid #000000; */
+    background-color: rgb(207, 207, 207);
     border-radius: 8px;
     z-index: 1;
    }
