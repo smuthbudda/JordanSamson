@@ -1,13 +1,15 @@
-.container{
-    width: 100%;
+.container{  
     display: flex;
-    justify-content: center;;
+    justify-content: center;
+    margin-top: 3rem;
+    
 }
 
 .projects-container{
     display: flex;
     justify-content: center;
     margin-top: 2rem;;
+    width: 80%;
 }
 
 .project-header{
@@ -20,6 +22,10 @@
 }
 
 .points-container{
+    background-color: #E76F51;
+    color:black;
+    padding: 1rem;
+    border-radius: 5px;
     width: 80%;
 }
 
@@ -54,6 +60,7 @@
   display:block;
   border:none;
   border-bottom:1px solid #cabcbc;
+  border-radius: 5px;
 }
 
 .points-input.points{
