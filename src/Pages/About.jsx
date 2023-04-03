@@ -1,11 +1,12 @@
 import React from "react";
 import "./About.css"
-
+import Glitch from "../Components/GlitchedText/GlitchedText";
 
 function About() {
   return (
     <div className="about-container">
-      <h1 className="about-title">About</h1>
+      <Glitch text="About" id="About"
+                style={{ "font-size": "2.5rem", "color": "black" }} className="one" />
       <p className="about-paragraph">
         I'm Jordan! Im a software developer and wanna be sprinter who is currently living in Melbourne, Vic. I made this
         website using react because why not :)
