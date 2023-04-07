@@ -1,0 +1,28 @@
+.showcase-container {
+    position: relative;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(12, 1fr);
+    -moz-box-align: center;
+    align-items: center;
+    height: 350px;
+    width: 100%;
+}
+
+.showcase__photo {
+    position: relative;
+    grid-area: 1 / 1 / -1 / 7;
+    grid-column-start: 1;
+    grid-column-end: 7;
+}
+
+.showcase__description {
+    box-shadow: 0 10px 30px -15px var(--navy-shadow);
+    transition: var(--transition);
+    grid-area: 1 / 6 / -1 / -1;
+    grid-column-start: 6;
+    grid-column-end: -1;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+}

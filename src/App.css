@@ -4,5 +4,19 @@
 }
 
 .jordan-body{
-  margin-top: 150px;
+  margin: 150px 100px 0 100px;
+}
+
+@media (max-width: 1000px) {
+  .jordan-body{
+    margin: 150px 5rem 0 5rem;
+  }
+  
+}
+
+@media (max-width: 700px) {
+  .jordan-body{
+    margin: 150px 2rem 0 2rem;
+  }
+  
 }

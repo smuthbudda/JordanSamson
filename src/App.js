@@ -4,8 +4,10 @@ import HomePage from "./Pages/HomePage"
 import About from "./Pages/About"
 import Projects from "./Pages/Projects/Projects"
 import NavBar from "./Components/NavBar"
-import Works from "./Pages/Works/Works"
 import PointsCalculator from './Pages/Projects/PointsCalc/PointsCalc';
+import Toolbar from './Components/BottomToolbar/BottomToolbars';
+
+
 
 function App() {
   return (
@@ -17,9 +19,9 @@ function App() {
           <Route path="/About" element={<About />} />
           <Route path="/Projects" element={<Projects />} />
           <Route path="/Projects/PointsCalculator" element={<PointsCalculator />} />
-          <Route path="/Works" element={<Works />} />
         </Routes>
       </div>
+      <Toolbar/>
     </Router>
   );
 }

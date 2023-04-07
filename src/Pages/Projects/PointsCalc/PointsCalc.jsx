@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import data from '../../../Data/WorldAthletics.json';
+import PointsData from '../../../Data/WorldAthletics.json';
 import Select from "react-dropdown-select";
 
 import "./PointsCalc.css"
@@ -134,7 +134,7 @@ function fancyTimeFormat(duration) {
 //finds a performance matching the parameters. If there is no performance matching the points
 //then it will recursively call until it finds a close match. However, definitely needs some refinement. 
 const findPerformance = (points, gender, category, event) => {
-    var foundItem = data.filter(item =>
+    var foundItem = PointsData.filter(item =>
         item.Points == points &&
         item.Gender == gender &&
         item.Category == category &&
@@ -148,7 +148,7 @@ const findPerformance = (points, gender, category, event) => {
 }
 
 const findPoints = (performance, gender, category, event) => {
-    var foundItem = data.filter(item =>
+    var foundItem = PointsData.filter(item =>
         item.Mark == performance &&
         item.Gender == gender &&
         item.Category == category &&
