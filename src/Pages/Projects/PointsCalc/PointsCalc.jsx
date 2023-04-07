@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import data from '../../../Data/WorldAthletics.json';
+import PointsData from '../../../Data/WorldAthletics.json';
 import Select from "react-dropdown-select";
 
 import "./PointsCalc.css"
@@ -25,8 +25,8 @@ export default function PointsCalculator() {
         var secondshours = hours * 60 * 60;
         var secondsmins = minutes * 60;
         var secondMilliseconds = milliseconds / 100;
-        var time =  secondshours + secondsmins + Math.round(seconds) + secondMilliseconds; 
-        
+        var time = secondshours + secondsmins + Math.round(seconds) + secondMilliseconds;
+
 
         if (!performanceBool) {
             perf = findPoints(time, gender[0].name, "outdoor", event[0].Event);
@@ -40,12 +40,9 @@ export default function PointsCalculator() {
         }
 
     }
-
     const handleRemoveItem = (e) => {
         updateTotalArray(totals.filter(item => item !== e));
     };
-
-
     return (
         <div className="container">
             <div className="points-container">
@@ -61,7 +58,7 @@ export default function PointsCalculator() {
                     <div className="points-grid--select">
                         <Select className="points-input" options={OutdoorEvents} labelField="Event" placeholder="Event" valueField="Event" onChange={(e) => setEvent(e)} />
                         <Select className="points-input" options={GenderArr} labelField="name" placeholder="Gender" valueField="value" onChange={(e) => setGender(e)} />
-                        <Select className="points-input" options={Category} labelField="name" placeholder="Category" valueField="value" onChange={(e) => setCategory(e)} disabled={true}/>
+                        <Select className="points-input" options={Category} labelField="name" placeholder="Category" valueField="value" onChange={(e) => setCategory(e)} disabled={true} />
                     </div>
                     <h5 className="project-subheader">Performance/Points
                         <input
@@ -124,9 +121,7 @@ function fancyTimeFormat(duration) {
     const hrs = ~~(duration / 3600);
     const mins = ~~((duration % 3600) / 60);
     const secs = ~~duration % 60;
-
     let ret = "";
-
     if (hrs > 0) {
         ret += "" + hrs + ":" + (mins < 10 ? "0" : "");
     }
@@ -139,7 +134,7 @@ function fancyTimeFormat(duration) {
 //finds a performance matching the parameters. If there is no performance matching the points
 //then it will recursively call until it finds a close match. However, definitely needs some refinement. 
 const findPerformance = (points, gender, category, event) => {
-    var foundItem = data.filter(item =>
+    var foundItem = PointsData.filter(item =>
         item.Points == points &&
         item.Gender == gender &&
         item.Category == category &&
@@ -153,7 +148,7 @@ const findPerformance = (points, gender, category, event) => {
 }
 
 const findPoints = (performance, gender, category, event) => {
-    var foundItem = data.filter(item =>
+    var foundItem = PointsData.filter(item =>
         item.Mark == performance &&
         item.Gender == gender &&
         item.Category == category &&
@@ -161,7 +156,7 @@ const findPoints = (performance, gender, category, event) => {
     )[0];
     if (foundItem === undefined && performance > 1) {
 
-        foundItem = findPoints(Math.round((performance - 0.01 ) * 100 )/ 100 , gender, category, event);
+        foundItem = findPoints(Math.round((performance - 0.01) * 100) / 100, gender, category, event);
     }
     console.log(foundItem);
     return foundItem;

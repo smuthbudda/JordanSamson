@@ -8,12 +8,6 @@
     flex-direction: column;
 } 
 
-.about-title{
-    width: 120px;
-    padding-top: 1rem;
-    border-top: solid 5px #E76F51;
-}
-
 .home-grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
