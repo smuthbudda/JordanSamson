@@ -76,58 +76,43 @@ function Projects() {
               </div>
             </div>
           } />
-          
+
       </div>
       <h1>Other Projects</h1>
       <div className="projects__container">
-        <Card>
-          <div className="card__header">
-            <Unicons.UilFolder className="icon" size="2rem" color="#FF3B3F" />
-            <Link to="/projects/pointscalculator" className="nav-link">
-              <Unicons.UilLink className="icon" size="2rem" color="white" />
-            </Link>
-          </div>
-          <div className="card__body">
-            <div>World Athletics Points Table Converter</div>
-            <p>Built a converter that takes a PDF file of the world athletics table and converts them to the </p>
-            <div className="card__tech">
-              <small>C#</small>
-              <small>.NET</small>
+
+        {Cards.map((item, key) =>
+          <Card>
+            <div className="card__header">
+              <Unicons.UilFolder className="icon" size="2rem" color="#FF3B3F" />
+              <Link to="/projects/pointscalculator" className="nav-link">
+                <Unicons.UilLink className="icon" size="2rem" color="white" />
+              </Link>
             </div>
-          </div>
-        </Card>
-        <Card>
-          <div className="card__header">
-            <Unicons.UilFolder className="icon" size="2rem" color="#FF3B3F" />
-            <Unicons.UilLink className="icon" size="2rem" color="white" />
-          </div>
-          <div className="card__body">
-            <div>React Portfolio Website</div>
-            <p>Built a converter that takes a PDF file of the world athletics table and converts them to the </p>
-            <div className="card__tech">
-              <small>C#</small>
-              <small>.NET</small>
+            <div className="card__body">
+              <div>{item.Title}</div>
+              <p>{item.Body}</p>
+              <div className="card__tech">
+                {item.Technologies.map((tech, key) =>
+                  <small>{tech.Name}</small>
+                )}
+              </div>
             </div>
-          </div>
-        </Card>
-        <Card>
-          <div className="card__header">
-            <Unicons.UilFolder className="icon" size="2rem" color="#FF3B3F" />
-            <Unicons.UilLink className="icon" size="2rem" color="white" />
-          </div>
-          <div className="card__body">
-            <div>World Athletics Points Table Converter</div>
-            <p>Built a converter that takes a PDF file of the world athletics table and converts them to the </p>
-            <div className="card__tech">
-              <small>C#</small>
-              <small>.NET</small>
-            </div>
-          </div>
-        </Card>
+          </Card>
+        )}
       </div>
     </div>
   );
 
 }
+
+
+const Cards = [
+  { Title: "World athletics points calculator", Body: "Built a converter that takes a PDF file of the world athletics table and converts them to the", Technologies: [{ Name: "C#" }, { Name: ".Net" }] },
+  { Title: "World athletics points calculator", Body: "Built a converter that takes a PDF file of the world athletics table and converts them to the", Technologies: [{ Name: "C#" }, { Name: ".Net" }] },
+  { Title: "World athletics points calculator", Body: "Built a converter that takes a PDF file of the world athletics table and converts them to the", Technologies: [{ Name: "C#" }, { Name: ".Net" }] },
+  { Title: "World athletics points calculator", Body: "Built a converter that takes a PDF file of the world athletics table and converts them to the", Technologies: [{ Name: "C#" }, { Name: ".Net" }] },
+  { Title: "World athletics points calculator", Body: "Built a converter that takes a PDF file of the world athletics table and converts them to the", Technologies: [{ Name: "C#" }, { Name: ".Net" }] },
+]
 
 export default Projects;

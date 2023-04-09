@@ -10,7 +10,7 @@ function HomePage() {
             <div className="home__container">
                 <p>Hi, my name is</p>
                 <Glitch text="Jordan Samson" id="Jordan Samson"
-                    style={{ "font-size": "3.5rem", "color": "black" }} className="one" />
+                    style={{ "font-size": "3.5rem", "color": "black", "text-align" : "end"}} className="one" />
                 <h4 >
                     I'm a Full Stack software developer based in
                     <div className="home__subtitle"> Melbourne, VIC, Australia.</div>

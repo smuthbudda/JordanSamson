@@ -2,7 +2,7 @@
     /* margin-left: 3rem;
     margin-right: 3rem; */
     margin-top: 2rem;
-    width: 65%;  
+    width: 80%;  
     margin:2rem auto 0 auto;
     display: flex;
     flex-direction: column;
@@ -18,7 +18,7 @@
     font-weight: 500;
 }
 
-@media (max-width: 800px){
+@media (max-width: 1000px){
     .home-container{
         /* margin-left: 3rem;
         margin-right: 3rem; */
