@@ -1,6 +1,6 @@
 .navbar__links {
     overflow: hidden;
-    background-color: #efefefee;
+    background-color: #e4e4e4;
     position: fixed;
     top: 0;
     width: 100%;
@@ -16,7 +16,7 @@
 .resume__button {
     color: #FF3B3F;
     border: #FF3B3F solid 2px;
-    background-color: #efefefee;
+    background-color: #e4e4e4;
     border-radius: 6px;
     padding: 10px;
     transform: translateY(-10px);
@@ -110,4 +110,89 @@ a.link div span{
     height: 5px;
     transition: all 0.35s ease-in-out;
 }
+
+.hamburger__menu{
+    display: none;
+}
+
+.side-nav{
+    display: none;
+}
+
+@media (max-width: 800px){
+    .hamburger__menu{
+        display: block;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-right: 1.5rem;
+    }
+    .links__list{
+        display: none;
+        
+    }
+    .side-nav__links{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:3rem;
+        width: 100%;
+        
+    }
+
+    .side-nav.active{
+        display: block;
+        position: fixed;
+        right:10px;
+        top:100px;
+        transition: all 0.5s ease-in-out;
+        width:50%;
+        background-color: #e4e4e4cc;
+        height: 100%;
+    }
+    .side-nav.inactive{
+        width:50%;
+        display: block;
+        position: fixed;
+        right:-100%;
+        top:100px;
+        transition: all 0.5s ease-in-out;
+        height: 100%;
+
+    }
+}
+/* Line */
+
+
+/* .link::after {
+    content: "";
+    position: absolute;
+    transform: translateY(0.3rem) translateX(-2rem);
+    left: calc(50% - 5px);
+    border-style: solid;
+    background-color: transparent;
+    color: #FF3B3F;
+    border-color: transparent;
+    display: block;
+    width: 1px;
+    height: 1px;
+
+}
+
+.link.active::after {
+    content: "";
+    position: absolute;
+    left:0;
+    transform: translateY(0.3rem);
+    border-style: solid;
+    background-color: #FF3B3F;
+    color: #FF3B3F;
+    border-bottom: #FF3B3F 1px;
+
+    border-radius: 0;
+    display: block;
+    width: 95%;
+    height: 0.0px;
+    transition: all 0.5s ease-in-out;
+}  
+*/
 

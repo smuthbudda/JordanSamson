@@ -97,26 +97,40 @@
     border-radius: 3px;
     padding: 0.7rem;
     color: white;
-    box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    transition: all 0.2s ease-in-out;
 }
 
 
 .project__description>.project__paragraph:hover {
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    box-shadow: 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+    transition: all 0.2s ease-in-out;
+    transform: translateY(-5px);
 }
 
 .project__description>.project__experience {
     z-index: 4;
     display: flex;
     gap: 1rem; 
+    transition: all 0.2s ease-in-out;
 }
+.project__description>.project__experience>div:hover{
+    color:#FF3B3F;
+    transition: all 0.3s ease-in-out;
+}
+
 .project__description>.project__experience-right {
     z-index: 4;
     display: flex;
     gap: 1rem; 
     justify-content: right;
+    transition: all 0.2s ease-in-out;
 }
 
+.project__description>.project__experience-right>div:hover{
+    color:#FF3B3F;
+    transition: all 0.3s ease-in-out;
+}
 
 /*
  Images 
@@ -127,7 +141,16 @@
     display: block;
     background: rgba(128, 128, 128, 0.418);
     border-radius: 3px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px;
+    box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+    filter: brightness(80%);
+    transition: all 0.2s ease-in-out;
+    background-color: #FF3B3F;
+}
+
+.images:hover{
+    transition: all 0.2s ease-in-out;
+    box-shadow: inset 0px 10px 20px 2px rgba(0, 0, 0, 0.25);
+    filter: brightness(100%);
 }
 
 #salaryPackagingPage {
@@ -167,7 +190,7 @@
     }
 
     .images {
-        filter: brightness(20%);
+        filter: brightness(30%);
     }
     .yeah-container {
         width: 100%;

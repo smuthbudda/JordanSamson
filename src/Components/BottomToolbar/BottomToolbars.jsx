@@ -1,24 +1,24 @@
 import "./BottomToolbars.css"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import * as Unicons from '@iconscout/react-unicons';
 
 function Toolbars() {
-
+    
     return (
         <>
             <div className={"toolbar left"}>
                 <div className="toolbar__icons " >
                     <a href="https://github.com/smuthbudda?tab=repositories" target="_blank">
-                        <Unicons.UilGithubAlt size="1.5REM" />
+                        <Unicons.UilGithubAlt size="1.5rem" />
                     </a>
                     <a href="https://www.youtube.com/channel/UCACRIvYPVdscGnHulrqfZoQ" target="_blank"> 
-                        <Unicons.UilYoutube size="1.5REM" />
+                        <Unicons.UilYoutube size="1.5rem" />
                     </a>
                     <a href="https://www.linkedin.com/in/jordan-samson-51a800231/" target="_blank">
-                        <Unicons.UilLinkedinAlt size="1.5REM" />
+                        <Unicons.UilLinkedinAlt size="1.5rem" />
                     </a>
                     <a href="https://github.com/smuthbudda?tab=repositories" target="_blank">
-                        <Unicons.UilInstagram size="1.5REM" />
+                        <Unicons.UilInstagram size="1.5rem" />
                     </a>
                 </div>
             </div>
@@ -29,6 +29,7 @@ function Toolbars() {
                     </a>
                 </div>
             </div>
+            
         </>
     )
 
