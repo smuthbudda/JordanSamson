@@ -1,6 +1,6 @@
 .navbar__links {
     overflow: hidden;
-    background-color: #e4e4e4;
+    background-color: #e4e4e4f1;
     position: fixed;
     top: 0;
     width: 100%;
@@ -11,6 +11,11 @@
     height: 100px;
     align-items: center;
     z-index: 100;
+    transition: all ease-in-out 0.2s;
+}
+.hide-nav{
+    height: 0;
+    transition: all ease-in-out 0.2s;
 }
 
 .resume__button {
@@ -118,7 +123,7 @@ a.link div span{
 .side-nav{
     display: none;
 }
-
+    
 @media (max-width: 800px){
     .hamburger__menu{
         display: block;
@@ -146,7 +151,7 @@ a.link div span{
         top:100px;
         transition: all 0.5s ease-in-out;
         width:50%;
-        background-color: #e4e4e4cc;
+        background-color: #e4e4e4ea;
         height: 100%;
     }
     .side-nav.inactive{
