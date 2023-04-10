@@ -2,41 +2,53 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
 import Logo from '../Components/jordanLogo.png';
-import Glitch from "../Components/GlitchedText/GlitchedText";
 import Resume from "../Data/JordanSamsonResume.pdf";
 import { UilBars } from '@iconscout/react-unicons'
 import { UilTimes } from '@iconscout/react-unicons'
 const NavBar = () => {
     const [navActive, SetnavActive] = useState(false);
+    const [show, setShow] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+
     var button;
     if (navActive) {
         button = <UilTimes size="2rem" />
     } else {
         button = <UilBars size="2rem" />
     }
-    // if (!navActive) {
-    //     var navMenu = document.getElementById('navMenu');
-    //     window.addEventListener('click', function (event) {
-    //         if (outsideClick(event, navMenu)) {
-    //             SetnavActive(false);
-    //         } else {
-    //             SetnavActive(true);
-    //         }
-    //     });
-    // }
+    const controlNavbar = () => {
+        if (typeof window !== 'undefined') {
+            if (window.scrollY > lastScrollY) {
+                setShow(false);
+            } else { 
+                setShow(true);
+            }
+            setLastScrollY(window.scrollY);
+        }
+    };
+
+    useEffect(() => {
+        if (typeof window !== 'undefined') {
+            window.addEventListener('scroll', controlNavbar);
+            return () => {
+                window.removeEventListener('scroll', controlNavbar);
+            };
+        }
+    }, [lastScrollY]);
+
     return (
-        <nav className="navbar__links" id='navMenu'>
-            <NavLink to="/" className="logolink" activeClassName="active">
+        <nav className={show ? "navbar__links ": "navbar__links hide-nav"} id='navMenu'>
+            <NavLink to="/" className="logolink" activeClassname="active">
                 <img src={Logo} alt="Logo" className='navLogo' />
             </NavLink>
             <div className='links__list'>
-                <NavLink to="/about" className="link" activeClassName="active">
+                <NavLink to="/about" className="link" activeClassname="active">
                     <div><span>01. </span>About</div>
                 </NavLink>
-                <NavLink to="/projects" className="link" activeClassName="active">
+                <NavLink to="/projects" className="link" activeClassname="active">
                     <div><span>02. </span>Projects</div>
                 </NavLink>
-                <NavLink to="/contacts" className="link" activeClassName="active">
+                <NavLink to="/contacts" className="link" activeClassname="active">
                     {/* <Glitch text="Projects" id="Jordan Samson"
                         style={{ "font-size": "1rem" }} /> */}
                     <div><span>03. </span>Contact</div>
@@ -50,13 +62,13 @@ const NavBar = () => {
             </div>
             <div className={navActive ? "side-nav active" : "side-nav inactive"} >
                 <div className='side-nav__links'>
-                    <NavLink to="/about" className="link" activeClassName="active">
+                    <NavLink to="/about" className="link" activeClassname="active">
                         <div><span>01. </span>About</div>
                     </NavLink>
-                    <NavLink to="/projects" className="link" activeClassName="active">
+                    <NavLink to="/projects" className="link" activeClassname="active">
                         <div><span>02. </span>Projects</div>
                     </NavLink>
-                    <NavLink to="/contacts" className="link" activeClassName="active">
+                    <NavLink to="/contacts" className="link" activeClassname="active">
                         <div><span>03. </span>Contact</div>
                     </NavLink>
                     <a href={Resume} target="_blank">
@@ -67,19 +79,5 @@ const NavBar = () => {
         </nav>
     );
 }
-
-
-function outsideClick(event, notelem) {
-    var clickedOut = true, i, len = notelem.length;
-    for (i = 0; i < len; i++) {
-        if (event.target == notelem[i] || notelem[i].contains(event.target)) {
-            clickedOut = false;
-        }
-    }
-    if (clickedOut) return true;
-    else return false;
-}
-
-
 
 export default NavBar;
