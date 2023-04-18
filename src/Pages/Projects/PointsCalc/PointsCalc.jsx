@@ -61,15 +61,15 @@ export default function PointsCalculator() {
                 <div className="points-grid">
                     <div className="points-grid--select">
                         <div>
-                        <h3>Event</h3>
+                            <h3>Event</h3>
                             <Select className="points-input" options={OutdoorEvents} labelField="Event" placeholder="Event" valueField="Event" onChange={(e) => setEvent(e)} />
                         </div>
                         <div>
-                        <h3>Gender</h3>
+                            <h3>Gender</h3>
                             <Select className="points-input" options={GenderArr} labelField="name" placeholder="Gender" valueField="value" onChange={(e) => setGender(e)} />
                         </div>
                         <div>
-                        <h3>Category</h3>
+                            <h3>Category</h3>
                             <Select className="points-input" options={Category} labelField="name" placeholder="Category" valueField="value" onChange={(e) => setCategory(e)} disabled={true} />
                         </div>
                     </div>
@@ -98,7 +98,6 @@ export default function PointsCalculator() {
                         <button type="button" id="calc-button" onClick={() => CalculateTotal()}
                         >Calculate</button>
                     </div>
-
                     <table className="results-table">
                         <thead>
                             <tr>
@@ -107,18 +106,13 @@ export default function PointsCalculator() {
                                 <th>Mark</th>
                                 <th>Gender</th>
                                 <th>Category</th>
+                                <th>Wind Adjust</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {totals.map((item, key) =>
-                                <tr key={key}>
-                                    <td>{item.Event}</td>
-                                    <td>{item.Points}</td>
-                                    <td>{item.MarkTime}</td>
-                                    <td>{item.Gender}</td>
-                                    <td>{item.Category}</td>
-                                    <td className="points-table--remove-button" onClick={() => handleRemoveItem(item)} >Remove</td>
-                                </tr>
+                                <PerformanceRow performance={item} key={key} handleRemoveItem={handleRemoveItem}/>
                             )}
                         </tbody>
                     </table>
@@ -128,6 +122,47 @@ export default function PointsCalculator() {
             </div>
         </div>
     )
+}
+
+const PerformanceRow = (props, calc = false) => {
+    const [performance, setPerformance] = useState(props.performance);
+    const [Time, setTime] = useState(0);
+    const [calculate, setcalculate] = useState(calc);
+
+    const CalculteWindTime = (wind) => {
+        var time = performance.Event === "100m" ? performance.Mark - (0.0449 * wind) + (0.009459 * performance.Mark * wind) - (0.0042 * wind * wind) :
+            performance.Event === "200m" ? performance.Mark + (0.090 * wind) - (0.010 * wind * wind) :
+                performance.Event === ("110mH" || "100mH") ? performance.Mark + (0.093 * wind) - (0.010 * wind * wind) :
+                    performance.Event === "LJ" ? performance.Mark - (0.029 * wind) :
+                        performance.Event === "TJ" ? performance.Mark + (0.069 * wind) - (0.009 * wind * wind) :
+                            performance.Mark;
+                            setcalculate(true);
+                            setTime(time.toFixed(2));
+    }
+
+    return (
+        <tr key={props.key}>
+            <td>{performance.Event}</td>
+            <td>{performance.Points}</td>
+            <td>{
+            Time !== 0 ? Time: performance.Mark  }</td>
+            <td>{performance.Gender}</td>
+            <td>{performance.Category}</td>
+            <td>
+                {
+                    performance.Event === "100m" || 
+                    performance.Event === "200m" || 
+                    performance.Event ==="110mH" ||
+                    performance.Event ==="100mH" || 
+                    performance.Event ==="LJ" ||
+                    performance.Event === "TJ" ?
+                        <input type="number" onChange={(e) => CalculteWindTime(e.target.value)} max={2.0} min={-2.0} /> :
+                        <></>
+                }
+            </td>
+            <td className="points-table--remove-button" onClick={() => props.handleRemoveItem(performance)} >Remove</td>
+        </tr>
+    );
 }
 
 const findPerformance = (points, gender, category, event) => {
@@ -158,7 +193,7 @@ const findPoints = (performance, gender, category, event) => {
             item.Event === event
         )[0];
         if (foundItem === undefined && performance > 0.00) {
-            performance = (performance - 0.01).toFixed(2);;
+            performance = (performance - 0.01).toFixed(2);
             foundItem = findPoints(performance, gender, category, event);
         }
         if (foundItem === undefined) {
@@ -179,7 +214,6 @@ const Category = [
     { value: 0, name: "indoor" },
     { value: 1, name: "outdoor" },
 ]
-
 const OutdoorEvents = [
     { Event: "10 Miles" }, { Event: "10,000m" }, { Event: "10,000mW" }, { Event: "1000m" }, { Event: "100km" },
     { Event: "100m" }, { Event: "100mH" }, { Event: "10km" }, { Event: "10kmW" }, { Event: "110mH" },
