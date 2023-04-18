@@ -48,6 +48,8 @@
     color: white;
     justify-content: center;
     position: relative;
+    /* overflow-y: scroll; */
+    position: relative;
 }
 
 .home__thing::after{

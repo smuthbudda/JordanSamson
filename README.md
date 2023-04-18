@@ -74,5 +74,5 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
 
-### The Icons are gotten from here
+### The Icons are from here
 https://iconscout.com/unicons/explore/line?redirect=%2Funicons%2Fexplore%2Fline%3Fcolor%3D%2525230092E4%26name%3Dgithub

@@ -14,7 +14,12 @@
     max-width:1000px;
     margin-bottom: 3rem;
     position: relative;
+    overflow-x:hidden;
+    overflow-y:hidden;
 }
+
+
+
 
 .points-container::after {
     content: '';
@@ -154,5 +159,9 @@
         grid-template-columns: repeat(1, 1fr);
         width: 100%;
         gap: 1rem
+    }
+    .results-table{
+        max-width:1000px;
+        overflow-x: scroll;
     }
 }
