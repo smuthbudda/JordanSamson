@@ -1,5 +1,5 @@
 import "./BottomToolbars.css"
-import React, { useEffect, useState } from "react";
+import React from "react";
 import * as Unicons from '@iconscout/react-unicons';
 
 function Toolbars() {

@@ -6,21 +6,26 @@ import "./Notes.css"
 import { UilCheck } from '@iconscout/react-unicons'
 import { UilCircle } from '@iconscout/react-unicons'
 import { UilPlusSquare } from '@iconscout/react-unicons'
+
+type TodoItem = {
+    id: string;
+    todo: string;
+    complete: boolean;
+}
+
 function Notes() {
-    //const [todos, setTodos] = useState([]);
-    //const [todos, setTodos] = useState([{complete:false, todo:"hi", id:"1"}]);
-    const [todos, setTodos] = useState([]);
+    const [todos, setTodos] = useState<TodoItem[]>([]);
     const [todoItem, setTodoItem] = useState('');
     const [error, setError] = useState(false);
-    const [completedTasks, setCompletedTasks] = useState('');
+    const [completedTasks, setCompletedTasks] = useState<string>();
     const firstUpdate = useRef(true);
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
         if (todoItem) {
             setError(false);
-            let uniqueId = new Date().getTime().toString(36) + new Date().getUTCMilliseconds();
-            let newTodoItem = {
+            let uniqueId: string = new Date().getTime().toString(36) + new Date().getUTCMilliseconds();
+            let newTodoItem: TodoItem = {
                 id: uniqueId,
                 todo: todoItem,
                 complete: false,
@@ -33,13 +38,13 @@ function Notes() {
         }
     };
 
-    const deleteTodo = (id) => {
-        let newTodos = todos.filter((todo) => todo.id !== id);
+    const deleteTodo = (id: string) => {
+        let newTodos = todos.filter((todo: TodoItem) => todo.id !== id);
         setTodos([...newTodos]);
     };
 
-    const toggleComplete = (id) => {
-        todos.find((todo) => {
+    const toggleComplete = (id: string) => {
+        todos.find((todo: TodoItem) => {
             if (todo.id === id) {
                 todo.complete = !todo.complete;
             }
@@ -47,23 +52,28 @@ function Notes() {
         });
     };
 
-    useEffect(() => {
-        let completeArray = [];
-        todos.filter((todo) => todo.complete === true && completeArray.push(todo));
-        setCompletedTasks(completeArray.length);
-    }, [todos]);
+    // useEffect(() => {
+    //     let completeArray : TodoItem[] = [];
+    //     todos.filter((todo) => todo.complete === true && completeArray.push(todo));
+    //     setCompletedTasks(completeArray.length.toLocaleString);
+    // }, [todos]);
 
     useEffect(() => {
-        let localTodos = JSON.parse(localStorage.getItem('todo'));
-        //localTodos.map((x) => {console.log(x);});
+        try {
 
-        if (localTodos) {
-            setTodos((oldarray) => oldarray.concat(localTodos));
-            //setTodos((oldarray)=> [...oldarray,localTodos]);
-            // setTodos(localTodos);
+            let localTodos: TodoItem[] = JSON.parse(localStorage.getItem('todo') || '{}');
+            //localTodos.map((x) => {console.log(x);});
+
+            if (localTodos) {
+                setTodos((oldarray) => oldarray.concat(localTodos));
+                //setTodos((oldarray)=> [...oldarray,localTodos]);
+                // setTodos(localTodos);
+            }
+
+            todos.map((x) => { console.log(x); });
+        } catch {
+            console.log("There was an error");
         }
-
-        todos.map((x) => { console.log(x); });
     }, []);
 
     useEffect(() => {
@@ -107,9 +117,9 @@ function Notes() {
                             <UilTrash onClick={() => deleteTodo(id)} />
                             <div className="icon" onClick={() => toggleComplete(id)}>
                                 {!complete ? (
-                                    <UilCheck className="todo-button green"/>
+                                    <UilCheck className="todo-button green" />
                                 ) : (
-                                    <UilCircle className="todo-button red"/>
+                                    <UilCircle className="todo-button red" />
                                 )}
                             </div>
                         </div>

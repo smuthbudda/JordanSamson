@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import "./NavBar.css";
+
 import Logo from '../Components/jordanLogo.png';
 import Resume from "../Data/JordanSamsonResume.pdf";
+
 import { UilBars } from '@iconscout/react-unicons'
 import { UilTimes } from '@iconscout/react-unicons'
+
+
+
 const NavBar = () => {
     const [navActive, SetnavActive] = useState(false);
     const [show, setShow] = useState(true);
@@ -16,6 +21,8 @@ const NavBar = () => {
     } else {
         button = <UilBars size="2rem" />
     }
+
+
     const controlNavbar = () => {
         if (typeof window !== 'undefined') {
             if (window.scrollY > lastScrollY) {
@@ -38,7 +45,7 @@ const NavBar = () => {
 
     return (
         <nav className={show ? "navbar__links ": "navbar__links hide-nav"} id='navMenu'>
-            <NavLink to="/" className="logolink" activeClassname="active">
+            <NavLink to="/" className={"logolink"} activeClassname='active'>
                 <img src={Logo} alt="Logo" className='navLogo' />
             </NavLink>
             <div className='links__list'>

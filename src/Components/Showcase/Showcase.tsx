@@ -2,8 +2,18 @@ import "./Showcase.css"
 import "./Showcase.css"
 import React from "react";
 
+type props = {
+    left : boolean
+}
 
-export default function Showcase({ child1, child2 }, props) {
+type childProps = {
+    child1?: React.ReactNode;
+    child2?: React.ReactNode;
+  };
+
+
+//I really do not like this function. 
+export default function Showcase({ child1 , child2 } :childProps, props : props ) {
     const left = props.left;
     if (left) {
         return (
